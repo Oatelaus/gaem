@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Fedelaus/gaem#readme",
   "dependencies": {
+    "express": "^4.17.1",
     "phaser": "^3.19.0"
   }
 }
