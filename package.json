@@ -19,5 +19,13 @@
   "dependencies": {
     "express": "^4.17.1",
     "phaser": "^3.19.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/register": "^7.6.2",
+    "babel": "^6.23.0",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0"
   }
 }
