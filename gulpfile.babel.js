@@ -5,7 +5,7 @@ function typescript(){
     return src('./src/**/*.ts')
         .pipe(babel({
             presets: ['@babel/env']
-        }))
+        }).on('error', (error) => console.log(error.toString())))
         .pipe(dest('dist'));
 }
 
