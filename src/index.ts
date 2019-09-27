@@ -9,4 +9,8 @@ class Gaem extends Game {
 
 window.onload = () => {
     const gaem = new Gaem();
+    console.log('he');1
 }
+
+
+

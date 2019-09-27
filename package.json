@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Fedelaus/gaem#readme",
   "dependencies": {
+    "browser-sync": "^2.26.7",
     "express": "^4.17.1",
     "phaser": "^3.19.0"
   },
@@ -29,6 +30,7 @@
     "babel": "^6.23.0",
     "gulp": "^4.0.2",
     "gulp-babel": "^8.0.0",
-    "gulp-concat": "^2.6.1"
+    "gulp-concat": "^2.6.1",
+    "gulp-sourcemaps": "^2.6.5"
   }
 }

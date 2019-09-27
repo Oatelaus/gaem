@@ -1,12 +1,39 @@
 const { src, dest, series, watch } = require('gulp');
 const babel = require('gulp-babel');
+const sourcemaps = require('gulp-sourcemaps');
+const browserSync = require('browser-sync').create();
+
+
+const vendorFiles = [
+    './node_modules/phaser/dist/phaser.min.js'
+]
+
+const sourceFiles = [
+    './src/index.ts'
+]
+
+function sync() {
+    return browserSync.init({
+        server: './dist'
+    })
+}
+
+
+function vendor() {
+    return src(vendorFiles)
+        .pipe(dest('dist'))
+        .pipe(browserSync.stream());
+}
 
 function typescript(){
     return src('./src/**/*.ts')
+        .pipe(sourcemaps.init())
         .pipe(babel({
-            presets: ['@babel/env']
+            presets: ['@babel/env'],
         }).on('error', (error) => console.log(error.toString())))
-        .pipe(dest('dist'));
+        .pipe(sourcemaps.write())
+        .pipe(dest('dist'))
+        .pipe(browserSync.stream());
 }
 
 function html() {
@@ -22,6 +49,7 @@ function monitor() {
 module.exports = {
     typescript: typescript,
     html: html,
-    default: series(typescript, html, monitor)
+    vendor: vendor,
+    default: sync() && series(vendor, typescript, html, monitor)
 } 
     
