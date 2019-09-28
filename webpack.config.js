@@ -2,6 +2,8 @@ var path = require('path')
 var webpack = require('webpack')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+var CopyPlugin = require('copy-webpack-plugin')
+const WriteFilePlugin = require('write-file-webpack-plugin');
 
 // Phaser webpack config
 var phaserModule = path.join(__dirname, '/node_modules/phaser/')
@@ -16,7 +18,7 @@ var definePlugin = new webpack.DefinePlugin({
 module.exports = {
     entry: {
         app: [
-            path.resolve(__dirname, 'src/main.ts')
+            path.resolve(__dirname, 'src/index.ts')
         ],
         vendor: ['phaser']
     },
@@ -48,11 +50,15 @@ module.exports = {
             },
             hash: false
         }),
+        // new WriteFilePlugin(),
+        // new CopyPlugin([
+        //     { from: './src/assets', to: 'dist' }
+        // ]),
         new BrowserSyncPlugin({
             host: process.env.IP || 'localhost',
             port: process.env.PORT || 3000,
             server: {
-                baseDir: ['./', './build']
+                baseDir: ['./', './dist']
             }
         })
     ],

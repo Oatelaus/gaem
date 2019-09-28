@@ -1,33 +1,20 @@
 import config from './config';
 import { Game, Loader } from 'phaser';
 import { Grid } from './world/grid';
+import { GaemScene } from './scenes/gaemScene';
+
 
 export class Gaem extends Game {
     constructor() {
         super(config);
     }
 }
-let gaem: Gaem;
+export let gaem: Gaem;
+let scene: GaemScene;
 window.onload = () => {
     gaem = new Gaem();
-    const scene = new GaemScene();
+    // scene.preload();
+    //scene.init(10, 10);
 }
 
-export class GaemScene extends Phaser.Scene {
-    public grid: Grid;
-    public gaem: Gaem;
 
-    constructor(){
-        super({
-            key: "GameScene"
-        });
-        this.grid = new Grid();
-        this.gaem = gaem;
-    };
-
-    init(gridX: integer, gridY: integer){
-        var image: string = 'test';
-        this.grid.init(this, image, gridX, gridY);
-
-    }
-}

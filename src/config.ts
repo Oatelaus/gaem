@@ -1,4 +1,5 @@
 import { AUTO } from 'phaser';
+import { GaemScene } from './scenes/gaemScene';
 
 export default {
     type: AUTO,
@@ -9,5 +10,7 @@ export default {
         arcade: {
             //gravity: { y: 200 }
         }
-    }
+    },
+    scene: [ GaemScene ],
+    backgroundColor: '#FFFFFF'  
 };

@@ -1,6 +1,6 @@
 import { Game } from 'phaser';
-import { GaemScene } from './../index';
-import Tile from './tile';
+import { GaemScene } from './../scenes/gaemScene';
+import { Tile } from './tile';
 import { Gaem } from './../index';
 
 export class Grid {
@@ -9,12 +9,14 @@ export class Grid {
 	constructor(){
 
 	}
-	init(scene: GaemScene, image: string, x: integer, y: integer){
+	init(scene: GaemScene, image: string, x: number, y: number){
+		console.log(this.ar_tiles);
 		for(var i = 0; i < x; i++){
+			this.ar_tiles[i] = [];
 			for(var j = 0; j < y; j++){
-				this.ar_tiles[i][j] = new Tile(image);
+				this.ar_tiles[i][j] = new Tile(scene, image, (i*12), (j*12));
 			}
 		}
-
+		console.log(this.ar_tiles);
 	}
 }
