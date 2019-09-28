@@ -16,10 +16,10 @@ export class GaemScene extends Phaser.Scene {
 		this.gaem = gaem;
 		console.log(this);
 	};
-	
+
 	init(){
-		this.gridX = 10;
-		this.gridY = 10;
+		this.gridX = 30;
+		this.gridY = 30;
 
 	}
 
