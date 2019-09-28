@@ -1,0 +1,18 @@
+{
+	"frames": [
+		{
+			"filename": "grass1",
+			"frame": { "x": 0	, "y": 0, "w": 64, "h": 64 },
+			"rotated": false,
+			"trimmed": false
+		}
+	],
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "./assets/img/terrain.png",
+		"format": "RGBA8888",
+		"size": { "w": 1472, "h": 832 },
+		"scale": "1"	
+	}
+}

@@ -5,6 +5,7 @@ import { GaemScene } from './scenes/gaemScene';
 
 
 export class Gaem extends Game {
+
     constructor() {
         super(config);
     }

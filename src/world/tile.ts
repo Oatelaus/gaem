@@ -1,18 +1,16 @@
-import { Game } from 'phaser';
+import { Game, GameObjects } from 'phaser';
 
-export class Tile {
-	private bg: Phaser.GameObjects.Image;
+export class Tile extends GameObjects.Sprite {
 	private xPos: number;
 	private yPos: number;
 
 
-	constructor(scene: Phaser.Scene, image: string, xPos: number, yPos: number){
+	constructor(scene: Phaser.Scene, image: string, sheet: string, xPos: number, yPos: number, ){
+		super(scene, xPos, yPos, sheet, image);
+		this.scene.add.existing(this);
+		console.log("tile init"); 
 		this.xPos = xPos;
 		this.yPos = yPos;
-		//this.bg = new Phaser.GameObjects.Image(scene, 12, 12, image);
-		this.bg = scene.add.image(xPos, yPos, image);
-		// this.bg.setPosition(xPos, yPos);
-		console.log("init tile?");
 	}
 
 };
