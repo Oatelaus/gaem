@@ -1,5 +1,11 @@
 export let levelData = {
 	spritesheet: "spritesheet",
+	nodes: [
+		{ type: 'start', x: 64, y: 64 },
+		{ type: 'path', x: 64, y: 704 },
+		{ type: 'path', x: 704, y: 704 },
+		{ type: 'end', x: 704, y: 64 }
+	],
 	tiles:[
 		[ 
 			{ image: "grass-a" },

@@ -1,11 +1,10 @@
 import { Level } from './../world/level';
 import { gaem, Gaem } from './../index';
 import { Grid } from './../world/grid';
-import { Tilemaps } from 'phaser';
+import { Events, GameObjects, Scenes } from 'phaser';
 
 export class GaemScene extends Phaser.Scene {
 	public grid: Grid;
-	
     public gaem: Gaem;
 	private level: Level;
 
@@ -14,7 +13,6 @@ export class GaemScene extends Phaser.Scene {
             key: "GameScene"
 		});
 		this.gaem = gaem;
-		console.log(this);
 	};
 
 	init(){
@@ -37,6 +35,6 @@ export class GaemScene extends Phaser.Scene {
 	}
 
 	update(){
-
+		
 	}
 }
