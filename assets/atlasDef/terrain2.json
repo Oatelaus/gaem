@@ -2,7 +2,85 @@
 	"frames": [
 		{
 			"filename": "grass1",
-			"frame": { "x": 0	, "y": 0, "w": 64, "h": 64 },
+			"frame": { "x": 960	, "y": 128, "w": 64, "h": 64 },
+			"rotated": false,
+			"trimmed": false
+		},
+		{
+			"filename": "grass-br",
+			"frame": { "x": 0, "y": 0, "w": 64, "h": 64 },
+			"rotated": false,
+			"trimmed": false
+		},
+		{
+			"filename": "grass-b",
+			"frame": { "x": 64, "y": 0, "w": 64, "h": 64 },
+			"rotated": false,
+			"trimmed": false
+		},
+		{
+			"filename": "grass-bl",
+			"frame": { "x": 128, "y": 0, "w": 64, "h": 64 },
+			"rotated": false,
+			"trimmed": false
+		},
+		{
+			"filename": "grass-r",
+			"frame": { "x": 0, "y": 64, "w": 64, "h": 64 },
+			"rotated": false,
+			"trimmed": false
+		},
+		{
+			"filename": "grass-a",
+			"frame": { "x": 64, "y": 64, "w": 64, "h": 64 },
+			"rotated": false,
+			"trimmed": false
+		},
+		{
+			"filename": "grass-l",
+			"frame": { "x": 128, "y": 64, "w": 64, "h": 64 },
+			"rotated": false,
+			"trimmed": false
+		},
+		{
+			"filename": "grass-tr",
+			"frame": { "x": 0, "y": 128, "w": 64, "h": 64 },
+			"rotated": false,
+			"trimmed": false
+		},
+		{
+			"filename": "grass-t",
+			"frame": { "x": 64, "y": 128, "w": 64, "h": 64 },
+			"rotated": false,
+			"trimmed": false
+		},
+		{
+			"filename": "grass-tl",
+			"frame": { "x": 128, "y": 128, "w": 64, "h": 64 },
+			"rotated": false,
+			"trimmed": false
+		},
+		{
+			"filename": "grass-c-tl",
+			"frame": { "x": 192, "y": 0, "w": 64, "h": 64 },
+			"rotated": false,
+			"trimmed": false
+		},
+		{
+			"filename": "grass-c-tr",
+			"frame": { "x": 256, "y": 0, "w": 64, "h": 64 },
+			"rotated": false,
+			"trimmed": false
+		},
+		{
+			"filename": "grass-c-bl",
+			"frame": { "x": 192, "y": 64, "w": 64, "h": 64 },
+			"rotated": false,
+			"trimmed": false
+		},
+		{
+			"filename": "grass-c-br",
+			"frame": { "x": 256, "y": 64, "w": 64, "h": 64 },
 			"rotated": false,
 			"trimmed": false
 		}
@@ -13,6 +91,6 @@
 		"image": "./assets/img/terrain.png",
 		"format": "RGBA8888",
 		"size": { "w": 1472, "h": 832 },
-		"scale": "1"	
+		"scale": "0.5"	
 	}
 }

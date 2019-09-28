@@ -25,7 +25,7 @@ export class GaemScene extends Phaser.Scene {
 	preload(){
 		this.load.image('tile', './assets/img/tile.png');
 		this.load.atlas('spritesheet', './assets/img/terrain2.png', './assets/atlasDef/terrain2.json'); //each tile is 42.5 x 42.5
-		
+		 
 
 
 
@@ -33,7 +33,7 @@ export class GaemScene extends Phaser.Scene {
 	}
 
 	create(){
-		this.level = new Level(this, 30, 30);
+		this.level = new Level(this);
 	}
 
 	update(){
