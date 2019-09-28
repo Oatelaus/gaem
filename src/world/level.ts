@@ -15,15 +15,11 @@ export class Level extends Phaser.GameObjects.Container{
 	constructor(scene: GaemScene){
 		super(scene, 0, 0);
 		this.scene = scene;
+		this.scene.add.existing(this);
 		this.create();
 	}
 
-	preload(){
-
-	}
-
 	create(){
-		this.setActive(true);
 		let image = 'grass1';
 		let sheet = 'spritesheet';
 		
@@ -33,8 +29,10 @@ export class Level extends Phaser.GameObjects.Container{
 			this.ar_nodes.push(node);
 
 		}
-		let enemy = new Enemy(this.scene, this.ar_nodes[0].x, this.ar_nodes[0].y, 'plane', levelData.spritesheet, this);
+		let enemy = new Enemy(this.scene, this.ar_nodes[0], 'plane', levelData.spritesheet, this);
 		this.ar_enemies.push(enemy);
+		this.setActive(true);
+
 	}
 
 	preUpdate(time: number, deltaTime: number){
@@ -44,12 +42,10 @@ export class Level extends Phaser.GameObjects.Container{
 			this.createEnemy();
 			this.counter = 0;
 		}
-
-
 	}
 
 	createEnemy(){
-		let enemy = new Enemy(this.scene, this.ar_nodes[0].x, this.ar_nodes[0].y, 'plane', levelData.spritesheet, this);
+		let enemy = new Enemy(this.scene, this.ar_nodes[0], 'plane', levelData.spritesheet, this);
 		this.ar_enemies.push(enemy);
 		console.log("new");
 	}
@@ -66,6 +62,6 @@ export class Level extends Phaser.GameObjects.Container{
 	}
 
 	unitDied(enemy: Enemy, deathDetail: object){
-		
+
 	}
 }

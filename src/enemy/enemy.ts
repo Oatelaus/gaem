@@ -11,8 +11,8 @@ export class Enemy extends GameObjects.Sprite {
 	speed: number = 0.25;
 	rotationSpeed: number = 0.05;
 	radius: number = 20;
-	constructor(scene: Phaser.Scene, xPos: number, yPos: number, image: string, sheet: string, level: Level){
-		super(scene, xPos, yPos, sheet, image);
+	constructor(scene: Phaser.Scene, startNode: PathNode, image: string, sheet: string, level: Level){
+		super(scene, startNode.x, startNode.y, sheet, image);
 		this.level = level;
 		this.scene.add.existing(this);
 		this.setActive(true);
