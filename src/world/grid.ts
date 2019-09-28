@@ -9,14 +9,13 @@ export class Grid {
 	constructor(){
 
 	}
+
 	init(scene: GaemScene, image: string, x: number, y: number){
-		console.log(this.ar_tiles);
 		for(var i = 0; i < x; i++){
 			this.ar_tiles[i] = [];
 			for(var j = 0; j < y; j++){
 				this.ar_tiles[i][j] = new Tile(scene, image, (i*12), (j*12));
 			}
 		}
-		console.log(this.ar_tiles);
 	}
 }

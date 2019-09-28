@@ -8,13 +8,13 @@ export class Gaem extends Game {
     constructor() {
         super(config);
     }
-}
+};
+
 export let gaem: Gaem;
 let scene: GaemScene;
+
 window.onload = () => {
     gaem = new Gaem();
-    // scene.preload();
-    //scene.init(10, 10);
 }
 
 

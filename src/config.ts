@@ -12,5 +12,5 @@ export default {
         }
     },
     scene: [ GaemScene ],
-    backgroundColor: '#FFFFFF'  
+    backgroundColor: '#FFFFFF'
 };
