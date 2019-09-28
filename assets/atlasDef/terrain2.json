@@ -83,6 +83,12 @@
 			"frame": { "x": 256, "y": 64, "w": 64, "h": 64 },
 			"rotated": false,
 			"trimmed": false
+		},
+		{
+			"filename": "plane",
+			"frame": { "x": 1088, "y": 704, "w": 64, "h": 64 },
+			"rotated": false,
+			"trimmed": false
 		}
 	],
 	"meta": {
