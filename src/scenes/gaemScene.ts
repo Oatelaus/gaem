@@ -27,7 +27,6 @@ export class GaemScene extends Phaser.Scene {
 
 
 
-		console.log("load");
 	}
 
 	create(){

@@ -8,7 +8,6 @@ export class Grid {
 
 	constructor(scene: GaemScene, levelDef: any){
 
-		console.log("test");
 		for(var i = 0; i < levelDef.tiles.length; i++){
 			this.ar_tiles[i] = [];
 			for(var j = 0; j < levelDef.tiles[i].length; j++){
