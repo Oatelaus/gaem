@@ -1,4 +1,13 @@
-export let levelData = {
+import { LevelData } from './../../src/types/levelDef'
+
+
+export const levelData: LevelData = {
+	waves: [
+		{ duration: 6000, reward: 100, waveEnemies: [
+			{ enemyId: 'plane', spawnAmount: 10, spawnDelay: 10, spawnPos: 0 },
+			{ enemyId: 'plane', spawnAmount: 20, spawnDelay: 240, spawnPos: 0 }
+		]}
+	],
 	spritesheet: "spritesheet",
 	nodes: [
 		{ type: 'start', x: 64, y: 64 },

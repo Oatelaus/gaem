@@ -49,7 +49,6 @@ export class Enemy extends GameObjects.Sprite {
 				this.lastNode++;
 				this.targetNode = this.level.getNextNode(this.lastNode);
 				this.getNewAngle();
-				console.log(this.targetNode);
 			}
 		}
 
@@ -60,7 +59,6 @@ export class Enemy extends GameObjects.Sprite {
 		let disY = this.targetNode.y - this.y;
 		let dir = new Phaser.Math.Vector2(disX, disY);
 		this.targetAngle = (dir.angle() * (180 / Math.PI));
-		console.log(this.targetAngle);
 	}
 
 	destroyMe(escaped: boolean, deathDetail = {}){

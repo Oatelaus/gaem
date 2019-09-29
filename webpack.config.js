@@ -67,7 +67,7 @@ module.exports = {
             {
                 test: /\.ts$/,
                 loaders: ['babel-loader', 'awesome-typescript-loader'],
-                include: path.join(__dirname, 'src'),
+                include: [ path.join(__dirname, 'src'), path.join(__dirname, 'assets') ],
             },
             {
                 test: [/\.vert$/, /\.frag$/],
