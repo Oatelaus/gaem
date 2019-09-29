@@ -1,35 +1,29 @@
 import { Scene, Textures } from "phaser";
-import uuid from 'uuid/v5';
+import uuid from 'uuid/v4';
 
 import Component from "./component/component";
 
-export default class Tower extends Phaser.GameObjects.Sprite {
+export default class Tower extends Phaser.GameObjects.Container {
 
     public uuid: string = uuid();
 
-    constructor(scene: Scene, x: number, y: number, texture: string, frame? : string | number, private components: Component[] = []) {
-        super(scene, x, y, texture, frame);
-        this.drawTexture();
-    }
+    private renderTexture: Phaser.GameObjects.RenderTexture;
 
-    drawTexture() {
-        const towerSize = this.towerSize;
 
-        const texture = this.scene.add.renderTexture(0, 0, towerSize.width, towerSize.height);
-        
-        texture.draw(this.components);
-
-        this.scene.textures.setTexture(texture, this.uuid);
+    constructor(scene: Scene, x: number, y: number, texture: string, frame?: string | number, private components: Component[] = []) {
+        super(scene, x, y);
+        this.scene.add.existing(this);
+        this.components.forEach(c => this.scene.add.existing(c));
     }
 
     addComponent(component: Component) {
         this.components.push(component);
-        this.drawTexture();
+        this.add(component)
     }
 
     removeComponent(component: Component) {
         this.components = this.components.filter(c => c !== component);
-        this.drawTexture();
+        this.remove(component);
     }
 
     /**
@@ -38,9 +32,9 @@ export default class Tower extends Phaser.GameObjects.Sprite {
     get towerSize() {
         return {
             width: this.components.map((c) => c.getTopRight().x)
-                    .reduce((highest, current) => current > highest ? current : highest),
+                .reduce((highest, current) => current > highest ? current : highest),
             height: this.components.map(c => c.getBottomRight().y)
-                    .reduce((highest, current) => current > highest ? current : highest),
+                .reduce((highest, current) => current > highest ? current : highest),
         }
     }
 }

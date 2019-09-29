@@ -22,6 +22,11 @@ module.exports = {
         ],
         vendor: ['phaser']
     },
+    devServer: {
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        }
+    },
     devtool: 'cheap-source-map',
     output: {
         pathinfo: true,
@@ -59,7 +64,8 @@ module.exports = {
             port: process.env.PORT || 3000,
             server: {
                 baseDir: ['./', './dist']
-            }
+            },
+            cors: true
         })
     ],
     module: {
