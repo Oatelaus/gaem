@@ -6,10 +6,7 @@ export default {
     width: 768,
     height: 768,
     physics: {
-        default: 'arcade',
-        arcade: {
-            //gravity: { y: 200 }
-        }
+        default: 'arcade'
     },
     scene: [ GaemScene ],
     backgroundColor: '#FFFFFF'
