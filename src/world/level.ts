@@ -1,7 +1,7 @@
 import { Grid } from './grid';
 import { GameObjects } from 'phaser';
 import { GaemScene } from './../scenes/gaemScene';
-import { levelData } from './../../assets/levelDef/test';
+import { levelData } from '../../assets/defs/level/test';
 import { Enemy } from './../enemy/enemy';
 import { PathNode } from './pathNode';
 import { Wave } from '../types/levelDef';
