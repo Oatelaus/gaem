@@ -1,4 +1,4 @@
-import { LevelData } from '../../../src/types/levelDef'
+import { LevelData } from '../../../src/types/level'
 
 
 export const levelData: LevelData = {

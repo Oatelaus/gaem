@@ -1,5 +1,5 @@
 import { Game } from 'phaser';
-import { GaemScene } from './../scenes/gaemScene';
+import { GaemScene } from '../scenes/gaem';
 import { Tile } from './tile';
 import { Gaem } from './../index';
 

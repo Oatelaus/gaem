@@ -1,5 +1,5 @@
 import { AUTO } from 'phaser';
-import { GaemScene } from './scenes/gaemScene';
+import { GaemScene } from './scenes/gaem';
 
 export default {
     type: AUTO,

@@ -8,7 +8,7 @@ const environments = {
             definitions: {
                 atlas: 'assets/defs/atlas',
                 level: 'assets/defs/level'
-            },
+            }
         }
     }
 }

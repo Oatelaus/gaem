@@ -1,10 +1,10 @@
 import { Grid } from './grid';
 import { GameObjects } from 'phaser';
-import { GaemScene } from './../scenes/gaemScene';
+import { GaemScene } from '../scenes/gaem';
 import { levelData } from '../../assets/defs/level/test';
 import { Enemy } from './../enemy/enemy';
 import { PathNode } from './pathNode';
-import { Wave } from '../types/levelDef';
+import { Wave } from '../types/level';
 
 export class Level extends Phaser.GameObjects.Container{
 	public grid: Grid;
