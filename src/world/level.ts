@@ -5,6 +5,7 @@ import { levelData } from '../../assets/defs/level/test';
 import { Enemy } from './../enemy/enemy';
 import { PathNode } from './pathNode';
 import { Wave } from '../types/level';
+import { NormalLandEnemy } from '../enemy/normal-land-enemy';
 
 export class Level extends Phaser.GameObjects.Container{
 	public grid: Grid;
@@ -19,8 +20,9 @@ export class Level extends Phaser.GameObjects.Container{
 	currentWave: number = -1;
 	currentEnemy: number = -1;
 	currentEnemyCount: number = 0;
-	waveTimeLeft: number = 10 * 60;
+	waveTimeLeft: number = 2 * 60;
 	wavesFinished: boolean = false;
+	enemyFinished: boolean = false;
 	enemyDelay: number;
 	counter: number = 0;
 	scene: GaemScene;
@@ -52,7 +54,7 @@ export class Level extends Phaser.GameObjects.Container{
 		if((this.waveTimeLeft <= 0) && !this.wavesFinished) this.newWave();
 		
 		this.enemyDelay--;
-		if(this.enemyDelay <= 0) this.createEnemy();
+		if((this.enemyDelay <= 0) && !this.enemyFinished) this.createEnemy();
 	}
 
 	newWave(){
@@ -69,23 +71,29 @@ export class Level extends Phaser.GameObjects.Container{
 		}else{
 			this.wavesFinished = true;
 		}
-
 	}
 
 	createEnemy(){
-		console.log("enemy")
 		if(this.currentEnemyCount >= levelData.waves[this.currentWave].waveEnemies[this.currentEnemy].spawnAmount){
 			this.currentEnemy++;
 			this.currentEnemyCount = 0;
-			console.log("new enemy");
 		}
 
-		let enemyDef = levelData.waves[this.currentWave].waveEnemies[this.currentEnemy];
+		if(this.currentEnemy < levelData.waves[this.currentWave].waveEnemies.length){
+			let enemyDef = levelData.waves[this.currentWave].waveEnemies[this.currentEnemy];
 
-		let enemy = new Enemy(this.scene, this.ar_nodes[enemyDef.spawnPos], 'plane', levelData.spritesheet, this);
-		this.currentEnemyCount++;
-		this.ar_enemies.push(enemy);
-		this.enemyDelay = enemyDef.spawnDelay;
+			// -- TO DO -- pick class according to enemy definition
+			let enemy = new NormalLandEnemy(this.scene, this.ar_nodes[enemyDef.spawnPos], 'plane', levelData.spritesheet, this);
+			
+
+			// let enemy = new Enemy(this.scene, this.ar_nodes[enemyDef.spawnPos], 'plane', levelData.spritesheet, this);
+			this.currentEnemyCount++;
+			this.ar_enemies.push(enemy);
+			enemy.on('entity-destroy', this.testEvent)
+			this.enemyDelay = enemyDef.spawnDelay;
+		}else{
+			this.enemyFinished = true;
+		};	
 	}
 
 	getNextNode(currentNodeIndex: number): PathNode{
@@ -97,6 +105,10 @@ export class Level extends Phaser.GameObjects.Container{
 			}
 		}
 		return (index == -1) ? this.ar_nodes[this.ar_nodes.length] : this.ar_nodes[index];
+	}
+
+	testEvent(event: any){
+		console.log(event);
 	}
 
 	unitDied(enemy: Enemy, deathDetail: object){
