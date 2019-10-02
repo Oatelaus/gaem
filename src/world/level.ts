@@ -10,6 +10,7 @@ import { NormalLandEnemy } from '../enemy/normal-land-enemy';
 export class Level extends Phaser.GameObjects.Container{
 	public grid: Grid;
 	public ar_enemies: Enemy[] = [];
+	public ar_airNodes: PathNode[] = [];
 	public ar_nodes: PathNode[] = [];
 	public ar_waves: Wave[] = [];
 	
@@ -48,7 +49,6 @@ export class Level extends Phaser.GameObjects.Container{
 	}
 
 	preUpdate(time: number, deltaTime: number){
-
 		//check for new wave;
 		this.waveTimeLeft--;
 		if((this.waveTimeLeft <= 0) && !this.wavesFinished) this.newWave();
@@ -96,8 +96,10 @@ export class Level extends Phaser.GameObjects.Container{
 		};	
 	}
 
-	getNextNode(currentNodeIndex: number): PathNode{
+
+	getNextNode(currentNodeIndex: number, type: string): PathNode{
 		let index = -1;
+		let ar_nodes = (type == 'air') ? this.ar_airNodes : this.ar_nodes;
 		for(var i = 0; i < this.ar_nodes.length; i++){
 			if(i > currentNodeIndex){
 				index = i;

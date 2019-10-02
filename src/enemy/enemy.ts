@@ -63,14 +63,9 @@ export class Enemy extends GameObjects.Sprite {
 				this.destroyMe({ escaped: true });
 			}else{
 				this.lastNode++;
-				this.targetNode = this.level.getNextNode(this.lastNode);
+				this.targetNode = this.level.getNextNode(this.lastNode, this.moveType);
 			}
 		}
-	}
-	
-	
-	checkDistanceToNextAirNode(){
-
 	}
 
 	/**
