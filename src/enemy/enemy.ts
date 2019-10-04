@@ -1,7 +1,6 @@
-import { GameObjects } from "phaser";
-import { gaem } from './../index';
-import { Level } from "../world/level";
-import { PathNode } from "../world/pathNode";
+import { GameObjects } from 'phaser';
+import { Level } from '../world/level';
+import { PathNode } from '../world/pathNode';
  
 export class Enemy extends GameObjects.Sprite {
 	public moveType: string;
@@ -59,7 +58,7 @@ export class Enemy extends GameObjects.Sprite {
 	checkDistanceToNextNode(){
 		if(this.getDistanceToNode() <= this.radius){
 			//Reached current node, check if end, else get next node
-			if(this.targetNode.type == 'end'){
+			if(this.targetNode.type === 'end'){
 				this.destroyMe({ escaped: true });
 			}else{
 				this.lastNode++;

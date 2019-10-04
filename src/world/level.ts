@@ -1,5 +1,5 @@
 import { Grid } from './grid';
-import { GameObjects } from 'phaser';
+// import { GameObjects } from 'phaser';
 import { GaemScene } from '../scenes/gaem';
 import { levelData } from '../../assets/defs/level/test';
 import { Enemy } from './../enemy/enemy';
@@ -35,10 +35,7 @@ export class Level extends Phaser.GameObjects.Container{
 		this.create();
 	}
 
-	create(){
-		let image = 'grass1';
-		let sheet = 'spritesheet';
-		
+	create(){		
 		this.grid = new Grid(this.scene, levelData);
 		for(var i = 0; i < levelData.nodes.length; i++){
 			let node = new PathNode(levelData.nodes[i].type, levelData.nodes[i].x, levelData.nodes[i].y);
@@ -50,9 +47,10 @@ export class Level extends Phaser.GameObjects.Container{
 
 	preUpdate(time: number, deltaTime: number){
 		//check for new wave;
-		this.waveTimeLeft--;
+		// this.waveTimeLeft--;
 		if((this.waveTimeLeft <= 0) && !this.wavesFinished) this.newWave();
-		
+
+
 		this.enemyDelay--;
 		if((this.enemyDelay <= 0) && !this.enemyFinished) this.createEnemy();
 	}
@@ -89,24 +87,17 @@ export class Level extends Phaser.GameObjects.Container{
 			// let enemy = new Enemy(this.scene, this.ar_nodes[enemyDef.spawnPos], 'plane', levelData.spritesheet, this);
 			this.currentEnemyCount++;
 			this.ar_enemies.push(enemy);
-			enemy.on('entity-destroy', this.testEvent)
+			enemy.on('entity-destroy', this.testEvent);
 			this.enemyDelay = enemyDef.spawnDelay;
 		}else{
 			this.enemyFinished = true;
-		};	
+		}	
 	}
 
 
 	getNextNode(currentNodeIndex: number, type: string): PathNode{
-		let index = -1;
-		let ar_nodes = (type == 'air') ? this.ar_airNodes : this.ar_nodes;
-		for(var i = 0; i < this.ar_nodes.length; i++){
-			if(i > currentNodeIndex){
-				index = i;
-				break;
-			}
-		}
-		return (index == -1) ? this.ar_nodes[this.ar_nodes.length] : this.ar_nodes[index];
+		let nodes = (type === 'air') ? this.ar_airNodes : this.ar_nodes;
+		return nodes.find((n, i) => i > currentNodeIndex);
 	}
 
 	testEvent(event: any){
