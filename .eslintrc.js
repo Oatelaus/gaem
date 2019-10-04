@@ -44,7 +44,19 @@ module.exports = {
 				"args": "none",
 			}
 		],
-		"no-unused-vars": 0
+		"no-unused-vars": 0,
+		"camelcase": 1,
+		"eqeqeq": 2,
+		"no-magic-numbers": 1,
+		"no-shadow": 1,
+		"array-bracket-spacing": [
+			2,
+			"always"
+		],
+		"brace-style": 2,
+		"no-array-constructor": 1,
+		"no-nested-ternary": 1,
+		"no-whitespace-before-property": 1
 	}
 	
 };
