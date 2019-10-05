@@ -47,7 +47,6 @@ module.exports = {
 		"no-unused-vars": 0,
 		"camelcase": 1,
 		"eqeqeq": 2,
-		"no-magic-numbers": 1,
 		"no-shadow": 1,
 		"array-bracket-spacing": [
 			2,
