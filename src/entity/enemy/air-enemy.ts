@@ -1,6 +1,6 @@
 import { Enemy } from './enemy';
-import { PathNode } from './../world/pathnode';
-import { Level } from './../world/level';
+import { PathNode } from '../../world/pathNode';
+import { Level } from '../../world/level';
 
 export class AirEnemy extends Enemy {
 

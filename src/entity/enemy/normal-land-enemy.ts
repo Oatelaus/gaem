@@ -1,6 +1,6 @@
 import { LandEnemy } from "./land-enemy";
-import { PathNode } from "../world/pathNode";
-import { Level } from "../world/level";
+import { PathNode } from "../../world/pathNode";
+import { Level } from "../../world/level";
 
 export class NormalLandEnemy extends LandEnemy{
 

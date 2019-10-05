@@ -1,4 +1,4 @@
-const env = process.env.environment || 'development';
+const env = 'development';
 
 const environments = {
     development: {

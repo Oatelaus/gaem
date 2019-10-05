@@ -1,8 +1,9 @@
 import { GameObjects } from 'phaser';
-import { Level } from '../world/level';
-import { PathNode } from '../world/pathNode';
+import { Level } from '../../world/level';
+import { PathNode } from '../../world/pathNode';
+import { Entity } from '../entity';
  
-export class Enemy extends GameObjects.Sprite {
+export class Enemy extends Entity {
 	public moveType: string;
 	public lastNode: number = 0;
 	public level: Level;
@@ -15,7 +16,7 @@ export class Enemy extends GameObjects.Sprite {
 	constructor(scene: Phaser.Scene, startNode: PathNode, image: string, sheet: string, level: Level){
 		super(scene, startNode.x, startNode.y, sheet, image);
 		this.level = level;
-		// this.scene.add.existing(this);
+		this.scene.add.existing(this);
 		this.level.add(this);
 		this.setActive(true);
 	}
