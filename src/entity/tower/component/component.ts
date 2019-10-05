@@ -5,6 +5,6 @@ export default class Component extends Entity {
 }
 
 // Component types?
-    // Ammo
-    // Barrel
-    // AI
+// Ammo
+// Barrel
+// AI
