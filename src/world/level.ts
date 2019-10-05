@@ -9,10 +9,10 @@ import { NormalLandEnemy } from '../enemy/normal-land-enemy';
 
 export class Level extends Phaser.GameObjects.Container{
 	public grid: Grid;
-	public ar_enemies: Enemy[] = [];
-	public ar_airNodes: PathNode[] = [];
-	public ar_nodes: PathNode[] = [];
-	public ar_waves: Wave[] = [];
+	public enemies: Enemy[] = [];
+	public airNodes: PathNode[] = [];
+	public nodes: PathNode[] = [];
+	public waves: Wave[] = [];
 	
 	// -- TO DO -- Store level state in a cleaner fashion..
 
@@ -39,7 +39,7 @@ export class Level extends Phaser.GameObjects.Container{
 		this.grid = new Grid(this.scene, levelData);
 		for(var i = 0; i < levelData.nodes.length; i++){
 			let node = new PathNode(levelData.nodes[i].type, levelData.nodes[i].x, levelData.nodes[i].y);
-			this.ar_nodes.push(node);
+			this.nodes.push(node);
 		}
 		this.setActive(true);
 		this.enemyDelay = this.waveTimeLeft + levelData.waves[0].waveEnemies[0].spawnDelay;
@@ -50,9 +50,10 @@ export class Level extends Phaser.GameObjects.Container{
 		// this.waveTimeLeft--;
 		if((this.waveTimeLeft <= 0) && !this.wavesFinished) this.newWave();
 
-
-		this.enemyDelay--;
-		if((this.enemyDelay <= 0) && !this.enemyFinished) this.createEnemy();
+		if((this.currentWave > -1) && (!this.wavesFinished)){
+			this.enemyDelay--;
+			if((this.enemyDelay <= 0) && !this.enemyFinished) this.createEnemy();
+		}
 	}
 
 	newWave(){
@@ -81,12 +82,12 @@ export class Level extends Phaser.GameObjects.Container{
 			let enemyDef = levelData.waves[this.currentWave].waveEnemies[this.currentEnemy];
 
 			// -- TO DO -- pick class according to enemy definition
-			let enemy = new NormalLandEnemy(this.scene, this.ar_nodes[enemyDef.spawnPos], 'plane', levelData.spritesheet, this);
+			let enemy = new NormalLandEnemy(this.scene, this.nodes[enemyDef.spawnPos], 'plane', levelData.spritesheet, this);
 			
 
 			// let enemy = new Enemy(this.scene, this.ar_nodes[enemyDef.spawnPos], 'plane', levelData.spritesheet, this);
 			this.currentEnemyCount++;
-			this.ar_enemies.push(enemy);
+			this.enemies.push(enemy);
 			enemy.on('entity-destroy', this.testEvent);
 			this.enemyDelay = enemyDef.spawnDelay;
 		}else{
@@ -96,7 +97,7 @@ export class Level extends Phaser.GameObjects.Container{
 
 
 	getNextNode(currentNodeIndex: number, type: string): PathNode{
-		let nodes = (type === 'air') ? this.ar_airNodes : this.ar_nodes;
+		let nodes = (type === 'air') ? this.airNodes : this.nodes;
 		return nodes.find((n, i) => i > currentNodeIndex);
 	}
 
