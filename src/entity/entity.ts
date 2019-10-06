@@ -6,19 +6,20 @@ export class Entity extends GameObjects.Sprite implements EntityStats {
 	armor: number;
 	attackDamage: number;
 	attackSpeed: number;
-	buffs: Buff[];
+	damageModifiers: DamageModifier[];
 
 	damageHistory: { 
 		original: DamageEntry,
 		actual: DamageEntry,
-		buffs: Buff[]
+		damageModifiers: DamageModifier[]
 	}[] = [];
 
 	damage(damage: DamageEntry) {
-		const originalDamage = {...damage};
+		// Clone the object
+		const originalDamage = { ...damage };
 
 		// Add and remove values from the damage based on the current buffs
-		damage.amount = damage.amount + this.buffs
+		damage.amount = damage.amount + this.damageModifiers
 			.filter(buff => buff.type === damage.type)
 			.map(buff => buff.amount)
 			.reduce((accumulator, current) => accumulator + current);
@@ -30,28 +31,28 @@ export class Entity extends GameObjects.Sprite implements EntityStats {
 		this.damageHistory.push({
 			original: originalDamage,
 			actual: damage,
-			buffs: { ...this.buffs }
+			damageModifiers: { ...this.damageModifiers }
 		});
 	}
 }
 
-
 export interface EntityStats {
 	health: number;
 	maxHealth: number;
-	armor: number;
-	attackDamage: number;
 	attackSpeed: number;
-	buffs: Buff[];
+	damageModifiers: DamageModifier[];
 }
 
+export interface DamageModifier {
+	type: DamageType,
+	amount: number,
+	source: string;
+}
 
 export interface DamageEntry {
 	type: DamageType,
 	amount: number
 }
-
-export interface Buff extends DamageEntry { }
 
 export enum DamageType {
 	NORMAL,
