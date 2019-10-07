@@ -1,17 +1,37 @@
-import { Game } from 'phaser';
 import { GaemScene } from '../scenes/gaem';
 import { Tile } from './tile';
-import { Gaem } from './../index';
+import { LevelData } from '../types/level';
 
 export class Grid {
-	public ar_tiles: Tile[][] = [];
+	public gridData: Tile[][] = [];
 
-	constructor(scene: GaemScene, levelDef: any){
+	constructor(
+		public scene: GaemScene, data: LevelData
+	) {
+		// If the data provided is a level definition
+		if (data.tiles) {
+			this.generateFromData(data);
+		} else if (data.x && data.y) {
+			const arrayX = new Array(data.x);
+			const arrayY = new Array(data.y);
 
-		for(var i = 0; i < levelDef.tiles.length; i++){
-			this.ar_tiles[i] = [];
-			for(var j = 0; j < levelDef.tiles[i].length; j++){
-				this.ar_tiles[i][j] = new Tile(scene, levelDef.tiles[i][j].image, levelDef.spritesheet, (i*64) + 32, (j*64) + 32);
+			const blankArrayData = arrayY.map((vY, y) => {
+				return arrayX.map((vX, x) => {
+					return {
+						image: data.defaultImage
+					};
+				});
+			});
+
+			this.generateFromData({ tiles: blankArrayData });
+		}
+	}
+
+	generateFromData(level: LevelData) {
+		for(var i = 0; i < level.tiles.length; i++){
+			this.gridData[i] = [];
+			for(var j = 0; j < level.tiles[i].length; j++){
+				this.gridData[i][j] = new Tile(this.scene, level.tiles[i][j].image, level.spritesheet, (i*64) + 32, (j*64) + 32);
 			}
 		}
 	}

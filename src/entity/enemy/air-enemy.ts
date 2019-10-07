@@ -10,7 +10,7 @@ export class AirEnemy extends Enemy {
 		this.targetNode = this.level.getNextNode(this.lastNode, this.moveType);
 	}
 
-	_preUpdate(time: number, deltaTime: number){
+	async _preUpdate(time: number, deltaTime: number){
 		this.checkDistanceToNextNode();
 		this.moveTowardsNode(deltaTime);
 		this.rotateTowardsNode();

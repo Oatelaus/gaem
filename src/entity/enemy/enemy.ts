@@ -18,7 +18,6 @@ export class Enemy extends Entity {
 		super(scene, startNode.x, startNode.y, sheet, image);
 		this.level = level;
 		this.scene.add.existing(this);
-		this.level.add(this);
 		this.setActive(true);
 	}
 
@@ -62,7 +61,7 @@ export class Enemy extends Entity {
 		if(this.getDistanceToNode() <= this.radius){
 			//Reached current node, check if end, else get next node
 			if(this.targetNode.type === 'end'){
-				this.destroyMe({ escaped: true });
+				this.die().then();
 			}else{
 				this.lastNode++;
 				this.targetNode = this.level.getNextNode(this.lastNode, this.moveType);
@@ -116,5 +115,6 @@ export class Enemy extends Entity {
 			}
 
 			this.destroy();
+		});
 	}
 }

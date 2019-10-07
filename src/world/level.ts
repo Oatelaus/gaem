@@ -7,7 +7,7 @@ import { PathNode } from './pathNode';
 import { Wave } from '../types/level';
 import { NormalLandEnemy } from '../entity/enemy/normal-land-enemy';
 
-export class Level extends Phaser.GameObjects.Container{
+export class Level extends Phaser.GameObjects.Container {
 	public grid: Grid;
 	public enemies: Enemy[] = [];
 	public airNodes: PathNode[] = [];
@@ -47,7 +47,7 @@ export class Level extends Phaser.GameObjects.Container{
 
 	preUpdate(time: number, deltaTime: number){
 		//check for new wave;
-		// this.waveTimeLeft--;
+		this.waveTimeLeft--;
 		if((this.waveTimeLeft <= 0) && !this.wavesFinished) this.newWave();
 
 		if((this.currentWave > -1) && (!this.wavesFinished)){
@@ -57,10 +57,14 @@ export class Level extends Phaser.GameObjects.Container{
 	}
 
 	newWave(){
+		console.log('n wave');
+
 		//handle old wave ending
 		if(this.currentWave > -1)
 			this.playerMoney += levelData.waves[this.currentWave].reward;
 		this.currentEnemy = 0;
+
+		console.log('new wave');
 
 		//start new wave
 		this.currentWave++;
@@ -77,6 +81,8 @@ export class Level extends Phaser.GameObjects.Container{
 			this.currentEnemy++;
 			this.currentEnemyCount = 0;
 		}
+
+		console.log('creating enemy');
 
 		if(this.currentEnemy < levelData.waves[this.currentWave].waveEnemies.length){
 			let enemyDef = levelData.waves[this.currentWave].waveEnemies[this.currentEnemy];
