@@ -1,7 +1,6 @@
 import { Level } from '../world/level';
 import { gaem, Gaem } from '../index';
 import { Grid } from '../world/grid';
-import { Events, GameObjects, Scenes } from 'phaser';
 import environment from '../env/environment';
 
 
@@ -10,12 +9,12 @@ export class GaemScene extends Phaser.Scene {
     public gaem: Gaem;
 	private level: Level;
 
-    constructor(){
-        super({
-            key: "GameScene"
+	constructor(){
+		super({
+			key: 'GameScene'
 		});
 		this.gaem = gaem;
-	};
+	}
 
 	init(){
 

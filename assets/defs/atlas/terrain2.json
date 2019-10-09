@@ -89,6 +89,12 @@
 			"frame": { "x": 1088, "y": 704, "w": 64, "h": 64 },
 			"rotated": false,
 			"trimmed": false
+		},
+		{
+			"filename": "green-dude",
+			"frame": { "x": 960, "y": 640, "w": 64, "h": 64 },
+			"rotated": false,
+			"trimmed": false
 		}
 	],
 	"meta": {

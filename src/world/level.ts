@@ -27,7 +27,9 @@ export class Level extends Phaser.GameObjects.Container{
 	enemyDelay: number;
 	counter: number = 0;
 	scene: GaemScene;
-
+	playing: boolean = true;
+	postDelay: number;
+	
 	constructor(scene: GaemScene){
 		super(scene, 0, 0);
 		this.scene = scene;
@@ -46,13 +48,17 @@ export class Level extends Phaser.GameObjects.Container{
 	}
 
 	preUpdate(time: number, deltaTime: number){
-		//check for new wave;
-		// this.waveTimeLeft--;
-		if((this.waveTimeLeft <= 0) && !this.wavesFinished) this.newWave();
+		if(this.playing){
+			//check for new wave;
+			if(this.enemyFinished && !this.wavesFinished){
+				this.postDelay--;
+				if(this.postDelay <= 0) this.newWave();
+			}
 
-		if((this.currentWave > -1) && (!this.wavesFinished)){
-			this.enemyDelay--;
-			if((this.enemyDelay <= 0) && !this.enemyFinished) this.createEnemy();
+			if((this.currentWave > -1) && !this.wavesFinished){
+				this.enemyDelay--;
+				if((this.enemyDelay <= 0) && !this.enemyFinished) this.createEnemy();
+			}
 		}
 	}
 
@@ -65,7 +71,7 @@ export class Level extends Phaser.GameObjects.Container{
 		//start new wave
 		this.currentWave++;
 		if(this.currentWave < levelData.waves.length){
-			this.waveTimeLeft = levelData.waves[this.currentWave].duration;
+			this.postDelay = levelData.waves[this.currentWave].postDelay;
 			this.createEnemy();
 		}else{
 			this.wavesFinished = true;
@@ -92,6 +98,7 @@ export class Level extends Phaser.GameObjects.Container{
 			this.enemyDelay = enemyDef.spawnDelay;
 		}else{
 			this.enemyFinished = true;
+			if(this.wavesFinished) this.postDelay = this.waves[this.currentWave].postDelay;
 		}	
 	}
 

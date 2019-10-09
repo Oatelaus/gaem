@@ -3,9 +3,17 @@ import { LevelData } from '../../../src/types/level';
 
 export const levelData: LevelData = {
 	waves: [
-		{ duration: 6000, reward: 100, waveEnemies: [
-			{ enemyId: 'plane', spawnAmount: 10, spawnDelay: 10, spawnPos: 0 },
-			{ enemyId: 'plane', spawnAmount: 20, spawnDelay: 240, spawnPos: 0 }
+		{ postDelay: 120, reward: 100, waveEnemies: [
+			{ enemyId: 'plane', spawnAmount: 50, spawnDelay: 10, spawnPos: 0 },
+			{ enemyId: 'plane', spawnAmount: 20, spawnDelay: 60, spawnPos: 0 },
+			{ enemyId: 'plane', spawnAmount: 24, spawnDelay: 30, spawnPos: 0 },
+			{ enemyId: 'plane', spawnAmount: 30, spawnDelay: 40, spawnPos: 0 },
+			{ enemyId: 'plane', spawnAmount: 5, spawnDelay: 50, spawnPos: 0 },
+			{ enemyId: 'plane', spawnAmount: 30, spawnDelay: 20, spawnPos: 0 }
+		]},
+		{ postDelay: 120, reward: 100, waveEnemies: [
+			{ enemyId: 'green-dude', spawnAmount: 50, spawnDelay: 15, spawnPos: 0 },
+			{ enemyId: 'green-dude', spawnAmount: 40, spawnDelay: 10, spawnPos: 0 }
 		]}
 	],
 	spritesheet: 'spritesheet',

@@ -1,4 +1,3 @@
-import { GameObjects } from 'phaser';
 import { Level } from '../../world/level';
 import { PathNode } from '../../world/pathNode';
 import { Entity } from '../entity';
@@ -17,7 +16,6 @@ export class Enemy extends Entity {
 		super(scene, startNode.x, startNode.y, sheet, image);
 		this.level = level;
 		this.scene.add.existing(this);
-		this.level.add(this);
 		this.setActive(true);
 	}
 
