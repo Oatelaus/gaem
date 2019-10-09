@@ -8,9 +8,7 @@ export class NormalLandEnemy extends LandEnemy{
 		super(scene, startNode, image, sheet, level);
 	}
 
-	preUpdate(time: number, deltaTime: number){
-		
-
-		this._preUpdate(time, deltaTime);
+	async preUpdate(time: number, deltaTime: number){
+		await this._preUpdate(time, deltaTime);
 	}
 }

@@ -55,7 +55,8 @@ module.exports = {
 		"brace-style": 2,
 		"no-array-constructor": 1,
 		"no-nested-ternary": 1,
-		"no-whitespace-before-property": 1
+		"no-whitespace-before-property": 1,
+		"require-atomic-updates": 0
 	}
 	
 };

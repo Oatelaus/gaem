@@ -4,7 +4,7 @@ import { Grid } from '../world/grid';
 import environment from '../env/environment';
 
 
-export class GaemScene extends Phaser.Scene {
+export class TowerScene extends Phaser.Scene {
 	public grid: Grid;
 	public gaem: Gaem;
 	private level: Level;
@@ -29,7 +29,7 @@ export class GaemScene extends Phaser.Scene {
 	}
 
 	create(){
-		this.level = new Level(this);
+
 	}
 
 	update(){

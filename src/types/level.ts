@@ -19,9 +19,11 @@ export interface WaveEnemy {
 }
 
 export interface LevelData {
-	nodes: Node[]; 
-	waves: Wave[]; 
-	tiles: object[];
-	spritesheet: string;
-
+	nodes?: Node[]; 
+	waves?: Wave[]; 
+	tiles?: any[][];
+	spritesheet?: string;
+	defaultImage?: string;
+	x?: number;
+	y?: number;
 }

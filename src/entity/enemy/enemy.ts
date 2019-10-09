@@ -1,6 +1,7 @@
 import { Level } from '../../world/level';
 import { PathNode } from '../../world/pathNode';
 import { Entity } from '../entity';
+import Event, { EventStatus } from '../../event/event';
  
 export class Enemy extends Entity {
 	public moveType: string;
@@ -59,7 +60,7 @@ export class Enemy extends Entity {
 		if(this.getDistanceToNode() <= this.radius){
 			//Reached current node, check if end, else get next node
 			if(this.targetNode.type === 'end'){
-				this.destroyMe({ escaped: true });
+				this.die().then();
 			}else{
 				this.lastNode++;
 				this.targetNode = this.level.getNextNode(this.lastNode, this.moveType);
@@ -104,8 +105,15 @@ export class Enemy extends Entity {
 	 * then destroys current entity
 	 * @param deathDetail The detail of how this enemy died, yet to be defined! :D
 	 */
-	destroyMe(deathDetail: object){
-		this.emit('entity-destroy', deathDetail);
-		this.destroy();
+	destroyMe(deathDetail: object) {
+		const entityDeathEvent = new Event('EntityDeathEvent', deathDetail);
+
+		entityDeathEvent.emit(this.scene.events).then((event) => {
+			if (event.status === EventStatus.Cancelled) {
+				return;
+			}
+
+			this.destroy();
+		});
 	}
 }
