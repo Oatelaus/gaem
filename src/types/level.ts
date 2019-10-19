@@ -7,7 +7,7 @@ export interface Node {
 }
 
 export interface Wave {
-	duration: number;
+	postDelay: number;
 	reward: number;
 
 	waveEnemies: WaveEnemy[];
