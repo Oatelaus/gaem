@@ -1,3 +1,5 @@
+import { Tile } from './world';
+
 export interface Node {
 	type: string;
 	x: number;
@@ -26,4 +28,6 @@ export interface LevelData {
 	defaultImage?: string;
 	x?: number;
 	y?: number;
+	tile?: Tile
 }
+

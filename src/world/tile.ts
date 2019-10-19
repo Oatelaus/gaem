@@ -1,6 +1,7 @@
-import { Game, GameObjects } from 'phaser';
+import { GameObjects } from 'phaser';
+import { Tile as ITile } from '../types/world';
 
-export class Tile extends GameObjects.Sprite {
+export class Tile extends GameObjects.Sprite implements ITile {
 	private xPos: number;
 	private yPos: number;
 
@@ -11,5 +12,4 @@ export class Tile extends GameObjects.Sprite {
 		this.xPos = xPos;
 		this.yPos = yPos;
 	}
-
-};
+}

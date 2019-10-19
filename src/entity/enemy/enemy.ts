@@ -1,4 +1,3 @@
-import { GameObjects } from 'phaser';
 import { Level } from '../../world/level';
 import { PathNode } from '../../world/pathNode';
 import { Entity } from '../entity';
@@ -61,7 +60,7 @@ export class Enemy extends Entity {
 		if(this.getDistanceToNode() <= this.radius){
 			//Reached current node, check if end, else get next node
 			if(this.targetNode.type === 'end'){
-				this.die().then();
+				this.die({}).then();
 			}else{
 				this.lastNode++;
 				this.targetNode = this.level.getNextNode(this.lastNode, this.moveType);

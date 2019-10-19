@@ -1,0 +1,30 @@
+{
+	"frames": [
+		{
+			"filename": "towerA",
+			"frame": { "x": 0	, "y": 0, "w": 32, "h": 32 },
+			"rotated": false,
+			"trimmed": false
+		},
+		{
+			"filename": "towerB",
+			"frame": { "x": 32, "y": 0, "w": 32, "h": 32 },
+			"rotated": false,
+			"trimmed": false
+		},
+		{
+			"filename": "towerC",
+			"frame": { "x": 0, "y": 32, "w": 32, "h": 32 },
+			"rotated": false,
+			"trimmed": false
+		}
+	],
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "./assets/img/tower.png",
+		"format": "RGBA8888",
+		"size": { "w": 64, "h": 64 },
+		"scale": "0.5"	
+	}
+}

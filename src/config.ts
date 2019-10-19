@@ -9,6 +9,6 @@ export default {
     physics: {
         default: 'arcade'
     },
-    scene: [ GaemScene ],
+    scene: [ TowerScene ],
     backgroundColor: '#FFFFFF'
 };
