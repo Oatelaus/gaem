@@ -1,6 +1,5 @@
 import config from './config';
-import { Game, Loader } from 'phaser';
-import { Grid } from './world/grid';
+import { Game } from 'phaser';
 import { GaemScene } from './scenes/gaem';
 
 export class Gaem extends Game {

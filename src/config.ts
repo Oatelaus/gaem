@@ -1,5 +1,4 @@
 import { AUTO } from 'phaser';
-import { GaemScene } from './scenes/gaem';
 import { TowerScene } from './scenes/tower';
 
 export default {
