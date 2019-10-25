@@ -2,6 +2,7 @@ node_modules/
 dist/
 build/
 .vscode/
+.history/
 .idea
 *.log
 src_old
