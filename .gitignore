@@ -1,23 +1,58 @@
-node_modules/
-dist/
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Compiled output
 build/
-.vscode/
-.history/
-.idea
-*.log
-src_old
-*.old.js
-phaserTilemapfix
-*.zip
-*.xcf
-*.wav
-legacy*
-*.txt
-dump/
-*.docx
-*.patch
-*.bak*
-*.old*
-higherVolume/
-yarn.lock
+dist/
+
+# Dependencies
+**/node_modules
 package-lock.json
+yarn.lock
+
+# IDEs and editors
+.c9/
+.classpath
+.project
+.settings/
+*.launch
+*.sublime-workspace
+/.idea
+
+# IDE - VSCode
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/settings.json
+!.vscode/tasks.json
+.vscode/*
+
+# Misc
+*.bak*
+*.docx
+*.log
+*.old.js
+*.old*
+*.patch
+*.txt
+*.wav
+*.xcf
+*.zip
+/.history
+/.sass-cache
+/connect.lock
+/coverage
+/libs/*/coverage
+/stuph
+/typings
+dump/
+higherVolume/
+legacy*
+phaserTilemapfix
+src_old
+
+# e2e
+/e2e/*.js
+/e2e/*.map
+
+# System Files
+.DS_Store
+Thumbs.db
